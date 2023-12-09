@@ -14,15 +14,17 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-int				main(int ac, char **av)
+int main(int ac, char **av)
 {
-	char	*line;
-	int		fd;
-	int		k;
+	char *line;
+	int fd;
+	int k;
 
 	k = 0;
 	ac--;
+	// open the file-descriptor sent in the command line arguments
 	fd = open(av[ac], O_RDONLY);
+	// reads the entire file, line by line
 	while (get_next_line(fd, &line) == 1)
 	{
 		k++;

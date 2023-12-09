@@ -11,19 +11,21 @@
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#define GET_NEXT_LINE_H
 
-# define BUFF_SIZE 10
-# include "libft/libft.h"
-# define VERIFICA(x) if (!x) return (-1);
+#include "libft.h"
 
-typedef	struct	s_gnl
+#define BUFF_SIZE 10
+#define VERIFICA(x) if (!x) return (-1);
+
+// the structure implements a linked list which holds a line from a certain file-descriptor
+typedef struct s_gnl
 {
-	char			*text;
-	int				fd;
-	struct s_gnl	*next;
-}				t_gnl;
+	char *text;				// the text line
+	int fd;					// the file descriptor
+	struct s_gnl *next;		// the pointer to the next file
+} t_gnl;
 
-int				get_next_line(int const fd, char **line);
+int get_next_line(int const fd, char **line);
 
 #endif
