@@ -72,10 +72,10 @@ Returns:
 int get_next_line(int const fd, char **line)
 {
 	static t_gnl *vf;				// the head of the queue where the file-descriptors are stored: static variable for keeping the text until the program stops
-	char text[BUFF_SIZE + 1];		// the text buffer
+	char text[BUFF_SIZE + 1];			// the text buffer
 	t_gnl *p;						// a routine pointer, used for queue operations
 	int cat;						// the amount of read characters
-	int	copiat;						// the amount of copied characters
+	int copiat;						// the amount of copied characters
 
 	// verify that the given file descriptor is valid
 	// verify that the given line pointer exists
