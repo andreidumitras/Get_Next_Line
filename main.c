@@ -6,7 +6,7 @@
 /*   By: adumitra <adumitra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 16:45:25 by adumitra          #+#    #+#             */
-/*   Updated: 2017/06/22 17:44:40 by adumitra         ###   ########.fr       */
+/*   Updated: 2023/12/09 21:44:40 by adumitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,23 @@
 #include <fcntl.h>
 #include <stdio.h>
 
+// a test program for reading an entire file, line by line.
 int main(int ac, char **av)
 {
-	char *line;
-	int fd;
-	int k;
+    char    *line;      // the line that will store a text line
+    int     fd;         // a file descriptor for the opened file
+    int     k;          // the line counter
 
-	k = 0;
-	ac--;
-	// open the file-descriptor sent in the command line arguments
-	fd = open(av[ac], O_RDONLY);
-	// reads the entire file, line by line
-	while (get_next_line(fd, &line) == 1)
-	{
-		k++;
-		printf("liniea %d: ->%s\n", k, line);
-	}
-	close(fd);
-	return (0);
+    k = 0;
+    ac--;
+    // open the file sent as a command line argument
+    fd = open(av[ac], O_RDONLY);
+    // read the file described by fd, line by line using get_next_line()
+    while (get_next_line(fd, &line) == 1)
+    {
+        k++;
+        printf("liniea %d: ->%s\n", k, line);
+    }
+    close(fd);
+    return (0);
 }
